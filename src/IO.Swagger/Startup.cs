@@ -21,10 +21,10 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using IO.Swagger.Filters;
-using IO.Swagger.Security;
+using IO.Revenium.Metering.Filters;
+using IO.Revenium.Metering.Security;
 
-namespace IO.Swagger
+namespace IO.Revenium.Metering
 {
     /// <summary>
     /// Startup

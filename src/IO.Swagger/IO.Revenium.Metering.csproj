@@ -2,11 +2,12 @@
   <PropertyGroup>
     <Description>IO.Swagger</Description>
     <Copyright>IO.Swagger</Copyright>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>IO.Swagger</AssemblyName>
-    <PackageId>IO.Swagger</PackageId>
+    <PackageId>IO.Revenium.Metering</PackageId>
+	  <IsPackable>true</IsPackable>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
