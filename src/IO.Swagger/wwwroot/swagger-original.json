@@ -1,0 +1,376 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Revenium Metering API",
+    "description" : "Revenium Metering API",
+    "contact" : {
+      "name" : "Revenium",
+      "url" : "https://revenium.io",
+      "email" : "info@revenium.io"
+    },
+    "version" : "1.14.0-SNAPSHOT"
+  },
+  "externalDocs" : {
+    "description" : "Revenium Metering API",
+    "url" : "https://revenium.io"
+  },
+  "servers" : [ {
+    "url" : "https://api.revenium.io/meter/v1/api",
+    "description" : "Revenium Metering API (Production)"
+  } ],
+  "tags" : [ {
+    "name" : "Events",
+    "description" : "Event based metering operations"
+  }, {
+    "name" : "Metring",
+    "description" : "Metering operations"
+  } ],
+  "paths" : {
+    "/meter" : {
+      "post" : {
+        "tags" : [ "Metring" ],
+        "summary" : "Insert API metering data",
+        "description" : "Insert API metering data",
+        "operationId" : "meter",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/MeteringRequestDTO"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Metering data successfully recorded",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Unit"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/event" : {
+      "post" : {
+        "tags" : [ "Events" ],
+        "summary" : "Save can API event",
+        "description" : "Save an API event",
+        "operationId" : "saveEvent",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ApiEventDTO"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Metering data successfully recorded",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/meter/product-key" : {
+      "get" : {
+        "tags" : [ "Metring" ],
+        "summary" : "Determine if a ProductKey is valid or not",
+        "description" : "Determine if a ProductKey is valid or not",
+        "operationId" : "valid",
+        "parameters" : [ {
+          "name" : "productKey",
+          "in" : "query",
+          "description" : "The product key",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "application",
+          "in" : "query",
+          "description" : "The application ID",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "ElementDTO" : {
+        "required" : [ "name", "value" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "example" : "container-number"
+          },
+          "value" : {
+            "type" : "string",
+            "example" : "1234"
+          }
+        },
+        "description" : "Dynamic metering elements"
+      },
+      "MeteringRequestDTO" : {
+        "required" : [ "elements", "method", "platformAPIKey", "requestHeaders", "responseCode", "responseHeaders" ],
+        "type" : "object",
+        "properties" : {
+          "api" : {
+            "type" : "string",
+            "example" : "3c2c3d64-2f59-4642-9406-17d7fb5e2d5c"
+          },
+          "productKey" : {
+            "type" : "string",
+            "description" : "The Product Key ID",
+            "example" : "53546bb0-9014-11eb-a8b3-0242ac130003"
+          },
+          "application" : {
+            "type" : "string",
+            "description" : "The Application ID",
+            "example" : "53546bb0-9014-11eb-a8b3-0242ac130003"
+          },
+          "method" : {
+            "type" : "string",
+            "description" : "The HTTP method being invoked",
+            "example" : "GET"
+          },
+          "url" : {
+            "type" : "string",
+            "description" : "The HTTP URL being invoked",
+            "example" : "https://api.foo.com/v1/api"
+          },
+          "metadata" : {
+            "type" : "string",
+            "description" : "Additional billing metadata (supports numeric values and comma-seperated key-value pairs)",
+            "example" : "5.0"
+          },
+          "backendLatency" : {
+            "type" : "number",
+            "description" : "Backend API response time",
+            "format" : "double",
+            "example" : 0.05
+          },
+          "gatewayLatency" : {
+            "type" : "number",
+            "description" : "Latency introduced by the API GW",
+            "format" : "double",
+            "example" : 0.05
+          },
+          "responseCode" : {
+            "type" : "integer",
+            "description" : "Backend HTTP response code",
+            "format" : "int32",
+            "example" : 200
+          },
+          "timedOut" : {
+            "type" : "boolean",
+            "description" : "Whether or not the backend timed out",
+            "example" : false
+          },
+          "requestMessageSize" : {
+            "type" : "integer",
+            "description" : "The size of the API request in bytes",
+            "format" : "int64",
+            "example" : 10000
+          },
+          "responseMessageSize" : {
+            "type" : "integer",
+            "description" : "The size of the API response in bytes",
+            "format" : "int64",
+            "example" : 10000
+          },
+          "requestHeaders" : {
+            "type" : "array",
+            "description" : "The comma seperated list of names of the headers in the request",
+            "example" : 10000,
+            "items" : {
+              "type" : "string",
+              "description" : "The comma seperated list of names of the headers in the request",
+              "example" : "10000"
+            }
+          },
+          "responseHeaders" : {
+            "type" : "array",
+            "description" : "The comma seperated list of names of the headers in the response",
+            "example" : 10000,
+            "items" : {
+              "type" : "string",
+              "description" : "The comma seperated list of names of the headers in the response",
+              "example" : "10000"
+            }
+          },
+          "userAgent" : {
+            "type" : "string",
+            "description" : "The HTTP User Agent",
+            "example" : "10000"
+          },
+          "remoteUser" : {
+            "type" : "string",
+            "description" : "The Remote User",
+            "example" : "apiclient"
+          },
+          "remoteHost" : {
+            "type" : "string",
+            "description" : "The Remote Host",
+            "example" : "api.acmesoft.com"
+          },
+          "httpProtocol" : {
+            "type" : "string",
+            "description" : "The HTTP Protocol",
+            "example" : "HTTP/1.0"
+          },
+          "contentType" : {
+            "type" : "string",
+            "description" : "The Content Type",
+            "example" : "application/json"
+          },
+          "correlationId" : {
+            "type" : "string",
+            "description" : "The Correlation ID",
+            "example" : "e6e62ba0-94c1-466c-8921-52f9d6b84066"
+          },
+          "platformAPIKey" : {
+            "type" : "string",
+            "description" : "platformAPIKey",
+            "example" : "hak-1234-20a033c6fbcb453ba9c797971c237080"
+          },
+          "elements" : {
+            "type" : "array",
+            "description" : "Dynamic metering elements",
+            "items" : {
+              "$ref" : "#/components/schemas/ElementDTO"
+            }
+          },
+          "source" : {
+            "type" : "string",
+            "description" : "the source of the event",
+            "example" : "KONG"
+          }
+        }
+      },
+      "Unit" : {
+        "type" : "object"
+      },
+      "ApiEventDTO" : {
+        "required" : [ "responseCode" ],
+        "type" : "object",
+        "properties" : {
+          "requestId" : {
+            "type" : "string"
+          },
+          "eventType" : {
+            "type" : "string",
+            "enum" : [ "REQUEST", "RESPONSE" ]
+          },
+          "assetId" : {
+            "type" : "string"
+          },
+          "productKey" : {
+            "type" : "string"
+          },
+          "application" : {
+            "type" : "string"
+          },
+          "method" : {
+            "type" : "string"
+          },
+          "currentMillis" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "uri" : {
+            "type" : "string"
+          },
+          "elapsedTime" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "metadata" : {
+            "type" : "string"
+          },
+          "responseCode" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "requestMessageSize" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "responseMessageSize" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "contentType" : {
+            "type" : "string"
+          },
+          "remoteHost" : {
+            "type" : "string"
+          },
+          "userAgent" : {
+            "type" : "string"
+          },
+          "correlationId" : {
+            "type" : "string"
+          },
+          "backendLatency" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "clientId" : {
+            "type" : "string"
+          },
+          "source" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "x-api-key" : {
+        "type" : "apiKey",
+        "name" : "x-api-key",
+        "in" : "header"
+      }
+    }
+  }
+}
