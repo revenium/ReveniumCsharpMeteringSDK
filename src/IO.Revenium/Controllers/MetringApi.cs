@@ -18,7 +18,6 @@ using IO.Revenium.Metering.Attributes;
 using IO.Revenium.Metering.Security;
 using Microsoft.AspNetCore.Authorization;
 using IO.Revenium.Metering.Models;
-using Microsoft.AspNet.WebApi; 
 
 namespace IO.Revenium.Metering.Controllers
 { 
@@ -42,7 +41,7 @@ namespace IO.Revenium.Metering.Controllers
         public virtual IActionResult Meter([FromBody]MeteringRequestDTO body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            return StatusCode(200, default(Unit));
+            // return StatusCode(200, default(Unit));
             string exampleJson = null;
             exampleJson = "{ }";
             
@@ -67,7 +66,7 @@ namespace IO.Revenium.Metering.Controllers
         public virtual IActionResult Valid([FromQuery]string productKey, [FromQuery]string application)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            return StatusCode(200, default(Object));
+            // return StatusCode(200, default(Object));
             string exampleJson = null;
             exampleJson = "{ }";
             
