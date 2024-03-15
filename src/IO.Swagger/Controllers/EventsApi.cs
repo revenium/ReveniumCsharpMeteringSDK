@@ -14,12 +14,12 @@ using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
-using IO.Swagger.Attributes;
-using IO.Swagger.Security;
+using IO.Revenium.Attributes;
+using IO.Revenium.Models;
+using IO.Revenium.Security;
 using Microsoft.AspNetCore.Authorization;
-using io.revenium;
 
-namespace IO.Swagger.Controllers
+namespace IO.Revenium.Controllers
 { 
     /// <summary>
     /// 
@@ -40,7 +40,7 @@ namespace IO.Swagger.Controllers
         public virtual IActionResult SaveEvent([FromBody]ApiEventDTO body)
         { 
             //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(201);
+            return StatusCode(201);
 
             throw new NotImplementedException();
         }

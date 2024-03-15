@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IO.Revenium", "src\IO.Swagger\IO.Revenium.csproj", "{CCE6C780-7E2D-498D-8EA2-E5F9253350CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C87B7ACD-70B1-45D7-A480-4B2A3A8234F2}
+	EndGlobalSection
+EndGlobal

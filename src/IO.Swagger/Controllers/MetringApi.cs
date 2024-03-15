@@ -14,12 +14,12 @@ using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
-using IO.Swagger.Attributes;
-using IO.Swagger.Security;
+using IO.Revenium.Attributes;
+using IO.Revenium.Security;
+using IO.Revenium.Models;
 using Microsoft.AspNetCore.Authorization;
-using io.revenium;
 
-namespace IO.Swagger.Controllers
+namespace IO.Revenium.Controllers
 { 
     /// <summary>
     /// 
@@ -41,7 +41,7 @@ namespace IO.Swagger.Controllers
         public virtual IActionResult Meter([FromBody]MeteringRequestDTO body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Unit));
+            return StatusCode(200, default(Unit));
             string exampleJson = null;
             exampleJson = "{ }";
             
@@ -51,7 +51,7 @@ namespace IO.Swagger.Controllers
             return new ObjectResult(example);
         }
 
-        /// <summary>
+        /// <summary>https://github.com/hypercurrentio/ReveniumChsarpMeteringSDK.git
         /// Determine if a ProductKey is valid or not
         /// </summary>
         /// <remarks>Determine if a ProductKey is valid or not</remarks>
@@ -66,7 +66,7 @@ namespace IO.Swagger.Controllers
         public virtual IActionResult Valid([FromQuery]string productKey, [FromQuery]string application)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Object));
+            return StatusCode(200, default(Object));
             string exampleJson = null;
             exampleJson = "{ }";
             
