@@ -14,12 +14,12 @@ using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
-using IO.Revenium.Metering.Attributes;
-using IO.Revenium.Metering.Security;
+using IO.Swagger.Attributes;
+using IO.Swagger.Security;
 using Microsoft.AspNetCore.Authorization;
-using IO.Revenium.Metering.Models;
+using io.revenium;
 
-namespace IO.Revenium.Metering.Controllers
+namespace IO.Swagger.Controllers
 { 
     /// <summary>
     /// 

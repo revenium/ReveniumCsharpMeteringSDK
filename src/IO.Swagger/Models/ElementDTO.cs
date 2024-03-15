@@ -18,7 +18,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace IO.Revenium.Metering.Models
+namespace IO.Swagger.Models
 {
     /// <summary>
     /// Dynamic metering elements

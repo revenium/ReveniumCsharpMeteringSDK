@@ -1,25 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IO.Revenium.Metering", "src\IO.Swagger\IO.Revenium.Metering.csproj", "{CCE6C780-7E2D-498D-8EA2-E5F9253350CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Swagger", "src\IO.Swagger\IO.Swagger.csproj", "{CCE6C780-7E2D-498D-8EA2-E5F9253350CF}"
 EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {EE57A40B-CCDF-4FA6-A9B1-0F4D0FE17DC5}
-	EndGlobalSection
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Any CPU = Debug|Any CPU
+        Release|Any CPU = Release|Any CPU
+    EndGlobalSection
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {CCE6C780-7E2D-498D-8EA2-E5F9253350CF}.Release|Any CPU.Build.0 = Release|Any CPU
+    EndGlobalSection
+    GlobalSection(SolutionProperties) = preSolution
+        HideSolutionNode = FALSE
+    EndGlobalSection
 EndGlobal

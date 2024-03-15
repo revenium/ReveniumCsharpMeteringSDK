@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore;
 
-namespace IO.Revenium.Metering
+namespace IO.Swagger
 {
     /// <summary>
     /// Program
