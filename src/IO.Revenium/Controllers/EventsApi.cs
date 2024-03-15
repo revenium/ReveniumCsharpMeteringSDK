@@ -40,7 +40,7 @@ namespace IO.Swagger.Controllers
         public virtual IActionResult SaveEvent([FromBody]ApiEventDTO body)
         { 
             //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(201);
+            return StatusCode(201);
 
             throw new NotImplementedException();
         }

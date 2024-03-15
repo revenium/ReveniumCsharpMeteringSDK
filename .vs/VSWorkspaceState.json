@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\IO.Swagger"
+    "\\src\\IO.Revenium",
+    "\\src\\IO.Revenium\\Controllers",
+    "\\src\\IO.Revenium\\Filters",
+    "\\src\\IO.Revenium\\Models"
   ],
-  "SelectedNode": "\\src\\IO.Swagger\\IO.Revenium.Metering.csproj",
+  "SelectedNode": "\\IO.Swagger.sln",
   "PreviewInSolutionExplorer": false
 }
