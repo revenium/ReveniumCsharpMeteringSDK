@@ -49,6 +49,16 @@ using IO.Revenium.Models;
         requestDTO.RequestHeaders = new List<string> { };
         requestDTO.ResponseHeaders = new List<string> { };
         requestDTO.Metadata = "test";
+        //optional
+        requestDTO.BackendLatency = 100.0;
+        requestDTO.GatewayLatency = 10.0;
+        requestDTO.TimedOut = false;
+        requestDTO.RequestMessageSize = 1024;
+        requestDTO.ResponseMessageSize = 1024;
+        requestDTO.RemoteUser = "example@gmail.com";
+        requestDTO.CorrelationId = "77273cd5-02be-46da-8022-87e237f25393";
+        requestDTO.HttpProtocol = "https";
+
 
         MetringApiController controller = new MetringApiController();
         try
