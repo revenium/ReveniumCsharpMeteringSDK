@@ -2,24 +2,85 @@
 
 Revenium Metering API
 
-## Run
-
-Linux/OS X:
+## Clone Repository
 
 ```
-sh build.sh
+git clone repo_address
 ```
 
-Windows:
+## Build Project 
+Right Click on the sln file and select build 
 
+note where the dll file is built 
 ```
-build.bat
+ie. src\IO.Swagger\bin\Debug\net6.0\IO.Revenium.dll
 ```
 
-## Run in Docker
 
+## Add to Project 
+Right click on dependencies file and add ProjectReference
+Select the IO.Revenium.dll files.
+
+## Add Dependencies for SDK
+Add Nuget Packages for SDK to function 
+* the version specified or later 
 ```
-cd src/IO.Swagger
-docker build -t io.swagger .
-docker run -p 5000:5000 io.swagger
+Newtonsoft.JSON (13.0.3)
+Swashbuckle.AspNetCore (6.5.0)
+Swashbuckle.AspNetCore.Annotations (6.5.0)
+```
+## Example implementation of SDK 
+
+```c#
+using IO.Revenium.Controllers;
+using IO.Revenium.Models;
+ class Hello
+{
+    static void Main(string[] args)
+    {
+        
+        //Make a Metering Request to Revenium
+        MeteringRequestDTO requestDTO = new MeteringRequestDTO();
+        requestDTO.Method = "GET";
+        requestDTO.PlatformAPIKey = "test_key";
+        requestDTO.Url = "api/1";
+        requestDTO.Application = "77273cd5-02be-46da-8022-87e237f25393";
+        requestDTO.ResponseCode = 200;
+        requestDTO.RequestHeaders = new List<string> { };
+        requestDTO.ResponseHeaders = new List<string> { };
+        requestDTO.Metadata = "test";
+
+        MetringApiController controller = new MetringApiController();
+        try
+        {
+           var result = controller.Meter(requestDTO);
+            Console.WriteLine(result);
+        }catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+       
+
+        //Create a new API event in Revenium
+        ApiEventDTO eventDTO = new ApiEventDTO();
+        eventDTO.ResponseCode = 201;
+        eventDTO.RequestId = "test";
+        eventDTO.EventType = ApiEventDTO.EventTypeEnum.RESPONSEEnum;
+        //second event type
+       // eventDTO.EventType = ApiEventDTO.EventTypeEnum.REQUESTEnum;
+
+        EventsApiController eventsApiController = new EventsApiController();
+        try
+        {
+            var result = eventsApiController.SaveEvent(eventDTO);
+            Console.WriteLine(result);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+
+
+    }
+}
 ```
