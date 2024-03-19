@@ -18,6 +18,11 @@ using IO.Revenium.Attributes;
 using IO.Revenium.Security;
 using IO.Revenium.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Net;
+using System.Text;
 
 namespace IO.Revenium.Controllers
 { 
@@ -26,7 +31,8 @@ namespace IO.Revenium.Controllers
     /// </summary>
     [ApiController]
     public class MetringApiController : ControllerBase
-    { 
+    {
+        private String basePath = "https://api.dev.hcapp.io";
         /// <summary>
         /// Insert API metering data
         /// </summary>
@@ -39,16 +45,28 @@ namespace IO.Revenium.Controllers
         [SwaggerOperation("Meter")]
         [SwaggerResponse(statusCode: 200, type: typeof(Unit), description: "Metering data successfully recorded")]
         public virtual IActionResult Meter([FromBody]MeteringRequestDTO body)
-        { 
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            return StatusCode(200, default(Unit));
-            string exampleJson = null;
-            exampleJson = "{ }";
-            
-                        var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<Unit>(exampleJson)
-                        : default(Unit);            //TODO: Change the data returned
-            return new ObjectResult(example);
+        {
+
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("x-api-key", "hak_5WWXaQ_80f6f60e8135712cd282b13f4d8afa5ee8c016a758fbbc55f03902c5749b539c");
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+      
+            var json = body.ToJson();
+            try
+            {
+               
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                String path = basePath + "/meter/v1/api/meter";
+                var result = client.PostAsync(path, content);
+                if (((int)result.Result.StatusCode).ToString().StartsWith('2')){
+                  
+                return Ok(result);
+                    }
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return BadRequest();
         }
 
         /// <summary>https://github.com/hypercurrentio/ReveniumChsarpMeteringSDK.git
@@ -74,6 +92,12 @@ namespace IO.Revenium.Controllers
                         ? JsonConvert.DeserializeObject<Object>(exampleJson)
                         : default(Object);            //TODO: Change the data returned
             return new ObjectResult(example);
+        }
+
+        private String parseNullValues(string json)
+        {
+          
+            return "";
         }
     }
 }

@@ -30,7 +30,7 @@ namespace IO.Revenium.Models
         /// Gets or Sets Api
         /// </summary>
 
-        [DataMember(Name="api")]
+        [DataMember(Name="api", EmitDefaultValue = false)]
         public string Api { get; set; }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>The Product Key ID</value>
 
-        [DataMember(Name="productKey")]
+        [DataMember(Name="productKey", EmitDefaultValue = false)]
         public string ProductKey { get; set; }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>The Application ID</value>
 
-        [DataMember(Name="application")]
+        [DataMember(Name="application", EmitDefaultValue = false)]
         public string Application { get; set; }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace IO.Revenium.Models
         /// <value>The HTTP method being invoked</value>
         [Required]
 
-        [DataMember(Name="method")]
+        [DataMember(Name="method", EmitDefaultValue = false)]
         public string Method { get; set; }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>The HTTP URL being invoked</value>
 
-        [DataMember(Name="url")]
+        [DataMember(Name="url", EmitDefaultValue = false)]
         public string Url { get; set; }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>Additional billing metadata (supports numeric values and comma-seperated key-value pairs)</value>
 
-        [DataMember(Name="metadata")]
+        [DataMember(Name="metadata", EmitDefaultValue = false)]
         public string Metadata { get; set; }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>Backend API response time</value>
 
-        [DataMember(Name="backendLatency")]
+        [DataMember(Name="backendLatency", EmitDefaultValue = false)]
         public double? BackendLatency { get; set; }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>Latency introduced by the API GW</value>
 
-        [DataMember(Name="gatewayLatency")]
+        [DataMember(Name="gatewayLatency", EmitDefaultValue = false)]
         public double? GatewayLatency { get; set; }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>Whether or not the backend timed out</value>
 
-        [DataMember(Name="timedOut")]
+        [DataMember(Name="timedOut", EmitDefaultValue = false)]
         public bool? TimedOut { get; set; }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>The size of the API request in bytes</value>
 
-        [DataMember(Name="requestMessageSize")]
+        [DataMember(Name="requestMessageSize", EmitDefaultValue = false)]
         public long? RequestMessageSize { get; set; }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>The size of the API response in bytes</value>
 
-        [DataMember(Name="responseMessageSize")]
+        [DataMember(Name="responseMessageSize", EmitDefaultValue = false)]
         public long? ResponseMessageSize { get; set; }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>The HTTP User Agent</value>
 
-        [DataMember(Name="userAgent")]
+        [DataMember(Name="userAgent", EmitDefaultValue = false)]
         public string UserAgent { get; set; }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>The Remote User</value>
 
-        [DataMember(Name="remoteUser")]
+        [DataMember(Name="remoteUser", EmitDefaultValue = false)]
         public string RemoteUser { get; set; }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>The Remote Host</value>
 
-        [DataMember(Name="remoteHost")]
+        [DataMember(Name="remoteHost", EmitDefaultValue = false)]
         public string RemoteHost { get; set; }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>The HTTP Protocol</value>
 
-        [DataMember(Name="httpProtocol")]
+        [DataMember(Name="httpProtocol", EmitDefaultValue = false)]
         public string HttpProtocol { get; set; }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>The Content Type</value>
 
-        [DataMember(Name="contentType")]
+        [DataMember(Name="contentType", EmitDefaultValue = false)]
         public string ContentType { get; set; }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>The Correlation ID</value>
 
-        [DataMember(Name="correlationId")]
+        [DataMember(Name="correlationId", EmitDefaultValue = false)]
         public string CorrelationId { get; set; }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace IO.Revenium.Models
         /// <value>Dynamic metering elements</value>
         [Required]
 
-        [DataMember(Name="elements")]
+        [DataMember(Name="elements", EmitDefaultValue = false)]
         public List<ElementDTO> Elements { get; set; }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace IO.Revenium.Models
         /// </summary>
         /// <value>the source of the event</value>
 
-        [DataMember(Name="source")]
+        [DataMember(Name="source", EmitDefaultValue = false)]
         public string Source { get; set; }
 
         /// <summary>
@@ -222,8 +222,8 @@ namespace IO.Revenium.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class MeteringRequestDTO {\n");
-            sb.Append("  Api: ").Append(Api).Append("\n");
+            sb.Append("MeteringRequestDTO:{\n");
+            sb.Append("Api:").Append(Api).Append("\n");
             sb.Append("  ProductKey: ").Append(ProductKey).Append("\n");
             sb.Append("  Application: ").Append(Application).Append("\n");
             sb.Append("  Method: ").Append(Method).Append("\n");
