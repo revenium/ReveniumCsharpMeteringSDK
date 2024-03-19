@@ -48,7 +48,7 @@ namespace IO.Revenium.Controllers
         {
 
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("x-api-key", "hak_5WWXaQ_80f6f60e8135712cd282b13f4d8afa5ee8c016a758fbbc55f03902c5749b539c");
+            client.DefaultRequestHeaders.Add("x-api-key", "your_revenium_api_key");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
       
             var json = body.ToJson();
@@ -84,7 +84,7 @@ namespace IO.Revenium.Controllers
         public virtual IActionResult Valid([FromQuery]string productKey, [FromQuery]string application)
         {
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("x-api-key", "hak_5WWXaQ_80f6f60e8135712cd282b13f4d8afa5ee8c016a758fbbc55f03902c5749b539c");
+            client.DefaultRequestHeaders.Add("x-api-key", "your_revenium_api_key");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             try
