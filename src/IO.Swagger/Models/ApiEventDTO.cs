@@ -30,7 +30,7 @@ namespace IO.Revenium.Models
         /// Gets or Sets RequestId
         /// </summary>
 
-        [DataMember(Name="requestId")]
+        [DataMember(Name="requestId", EmitDefaultValue = false)]
         public string RequestId { get; set; }
 
         /// <summary>
@@ -54,63 +54,63 @@ namespace IO.Revenium.Models
         /// Gets or Sets EventType
         /// </summary>
 
-        [DataMember(Name="eventType")]
+        [DataMember(Name="eventType", EmitDefaultValue = false)]
         public EventTypeEnum? EventType { get; set; }
 
         /// <summary>
         /// Gets or Sets AssetId
         /// </summary>
 
-        [DataMember(Name="assetId")]
+        [DataMember(Name="assetId", EmitDefaultValue = false)]
         public string AssetId { get; set; }
 
         /// <summary>
         /// Gets or Sets ProductKey
         /// </summary>
 
-        [DataMember(Name="productKey")]
+        [DataMember(Name="productKey", EmitDefaultValue = false)]
         public string ProductKey { get; set; }
 
         /// <summary>
         /// Gets or Sets Application
         /// </summary>
 
-        [DataMember(Name="application")]
+        [DataMember(Name="application", EmitDefaultValue = false)]
         public string Application { get; set; }
 
         /// <summary>
         /// Gets or Sets Method
         /// </summary>
 
-        [DataMember(Name="method")]
+        [DataMember(Name="method", EmitDefaultValue = false)]
         public string Method { get; set; }
 
         /// <summary>
         /// Gets or Sets CurrentMillis
         /// </summary>
 
-        [DataMember(Name="currentMillis")]
+        [DataMember(Name="currentMillis", EmitDefaultValue = false)]
         public long? CurrentMillis { get; set; }
 
         /// <summary>
         /// Gets or Sets Uri
         /// </summary>
 
-        [DataMember(Name="uri")]
+        [DataMember(Name="uri", EmitDefaultValue = false)]
         public string Uri { get; set; }
 
         /// <summary>
         /// Gets or Sets ElapsedTime
         /// </summary>
 
-        [DataMember(Name="elapsedTime")]
+        [DataMember(Name="elapsedTime", EmitDefaultValue = false)]
         public long? ElapsedTime { get; set; }
 
         /// <summary>
         /// Gets or Sets Metadata
         /// </summary>
 
-        [DataMember(Name="metadata")]
+        [DataMember(Name="metadata", EmitDefaultValue = false)]
         public string Metadata { get; set; }
 
         /// <summary>
@@ -125,63 +125,63 @@ namespace IO.Revenium.Models
         /// Gets or Sets RequestMessageSize
         /// </summary>
 
-        [DataMember(Name="requestMessageSize")]
+        [DataMember(Name="requestMessageSize", EmitDefaultValue = false)]
         public long? RequestMessageSize { get; set; }
 
         /// <summary>
         /// Gets or Sets ResponseMessageSize
         /// </summary>
 
-        [DataMember(Name="responseMessageSize")]
+        [DataMember(Name="responseMessageSize", EmitDefaultValue = false)]
         public long? ResponseMessageSize { get; set; }
 
         /// <summary>
         /// Gets or Sets ContentType
         /// </summary>
 
-        [DataMember(Name="contentType")]
+        [DataMember(Name="contentType", EmitDefaultValue = false)]
         public string ContentType { get; set; }
 
         /// <summary>
         /// Gets or Sets RemoteHost
         /// </summary>
 
-        [DataMember(Name="remoteHost")]
+        [DataMember(Name="remoteHost", EmitDefaultValue = false)]
         public string RemoteHost { get; set; }
 
         /// <summary>
         /// Gets or Sets UserAgent
         /// </summary>
 
-        [DataMember(Name="userAgent")]
+        [DataMember(Name="userAgent", EmitDefaultValue = false)]
         public string UserAgent { get; set; }
 
         /// <summary>
         /// Gets or Sets CorrelationId
         /// </summary>
 
-        [DataMember(Name="correlationId")]
+        [DataMember(Name="correlationId", EmitDefaultValue = false)]
         public string CorrelationId { get; set; }
 
         /// <summary>
         /// Gets or Sets BackendLatency
         /// </summary>
 
-        [DataMember(Name="backendLatency")]
+        [DataMember(Name="backendLatency", EmitDefaultValue = false)]
         public double? BackendLatency { get; set; }
 
         /// <summary>
         /// Gets or Sets ClientId
         /// </summary>
 
-        [DataMember(Name="clientId")]
+        [DataMember(Name="clientId", EmitDefaultValue = false)]
         public string ClientId { get; set; }
 
         /// <summary>
         /// Gets or Sets Source
         /// </summary>
 
-        [DataMember(Name="source")]
+        [DataMember(Name="source", EmitDefaultValue = false)]
         public string Source { get; set; }
 
         /// <summary>

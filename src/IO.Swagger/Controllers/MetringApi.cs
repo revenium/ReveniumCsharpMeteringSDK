@@ -47,7 +47,7 @@ namespace IO.Revenium.Controllers
         public virtual IActionResult Meter([FromBody]MeteringRequestDTO body)
         {
 
-            var client = new HttpClient();
+            HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("x-api-key", "hak_5WWXaQ_80f6f60e8135712cd282b13f4d8afa5ee8c016a758fbbc55f03902c5749b539c");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
       
@@ -55,7 +55,7 @@ namespace IO.Revenium.Controllers
             try
             {
                
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                 String path = basePath + "/meter/v1/api/meter";
                 var result = client.PostAsync(path, content);
                 if (((int)result.Result.StatusCode).ToString().StartsWith('2')){
@@ -82,22 +82,25 @@ namespace IO.Revenium.Controllers
         [SwaggerOperation("Valid")]
         [SwaggerResponse(statusCode: 200, type: typeof(Object), description: "OK")]
         public virtual IActionResult Valid([FromQuery]string productKey, [FromQuery]string application)
-        { 
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            return StatusCode(200, default(Object));
-            string exampleJson = null;
-            exampleJson = "{ }";
-            
-                        var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<Object>(exampleJson)
-                        : default(Object);            //TODO: Change the data returned
-            return new ObjectResult(example);
-        }
-
-        private String parseNullValues(string json)
         {
-          
-            return "";
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("x-api-key", "hak_5WWXaQ_80f6f60e8135712cd282b13f4d8afa5ee8c016a758fbbc55f03902c5749b539c");
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            try
+            {
+                String path = basePath + $"/meter/v1/api/meter/product-key?productKey={productKey}&application={application}";
+                var result = client.GetAsync(path);
+                if (((int)result.Result.StatusCode).ToString().StartsWith('2'))
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return BadRequest();
         }
     }
 }

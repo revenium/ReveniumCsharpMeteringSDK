@@ -18,6 +18,11 @@ using IO.Revenium.Attributes;
 using IO.Revenium.Models;
 using IO.Revenium.Security;
 using Microsoft.AspNetCore.Authorization;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Net;
+using System.Text;
 
 namespace IO.Revenium.Controllers
 { 
@@ -26,7 +31,9 @@ namespace IO.Revenium.Controllers
     /// </summary>
     [ApiController]
     public class EventsApiController : ControllerBase
-    { 
+    {
+
+        private String basePath = "https://api.dev.hcapp.io";
         /// <summary>
         /// Save can API event
         /// </summary>
@@ -38,11 +45,30 @@ namespace IO.Revenium.Controllers
         [ValidateModelState]
         [SwaggerOperation("SaveEvent")]
         public virtual IActionResult SaveEvent([FromBody]ApiEventDTO body)
-        { 
-            //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            return StatusCode(201);
+        {
 
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("x-api-key", "hak_5WWXaQ_80f6f60e8135712cd282b13f4d8afa5ee8c016a758fbbc55f03902c5749b539c");
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var json = body.ToJson();
+            Console.WriteLine(json);
+
+            try
+            {
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                String path = basePath + $"/meter/v1/api/event";
+                var result = client.PostAsync(path, content);
+                if (((int)result.Result.StatusCode).ToString().StartsWith('2'))
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return BadRequest();
         }
     }
 }
