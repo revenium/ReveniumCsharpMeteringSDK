@@ -44,7 +44,7 @@ using IO.Revenium.Models;
         requestDTO.Method = "GET";
         requestDTO.PlatformAPIKey = "test_key";
         requestDTO.Url = "api/1";
-        requestDTO.Application = "77273cd5-02be-46da-8022-87e237f25393";
+        requestDTO.SubscriberCredential = "77273cd5-02be-46da-8022-87e237f25393";
         requestDTO.ResponseCode = 200;
         requestDTO.RequestHeaders = new List<string> { };
         requestDTO.ResponseHeaders = new List<string> { };

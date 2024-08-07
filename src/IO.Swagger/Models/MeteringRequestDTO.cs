@@ -39,7 +39,7 @@ namespace IO.Revenium.Models
         /// <value>The Product Key ID</value>
 
         [DataMember(Name="productKey", EmitDefaultValue = false)]
-        public string ProductKey { get; set; }
+        public string Subscription { get; set; }
 
         /// <summary>
         /// The Application ID
@@ -47,7 +47,7 @@ namespace IO.Revenium.Models
         /// <value>The Application ID</value>
 
         [DataMember(Name="application", EmitDefaultValue = false)]
-        public string Application { get; set; }
+        public string SubscriberCredential { get; set; }
 
         /// <summary>
         /// The HTTP method being invoked
@@ -288,14 +288,14 @@ namespace IO.Revenium.Models
                     Api.Equals(other.Api)
                 ) && 
                 (
-                    ProductKey == other.ProductKey ||
-                    ProductKey != null &&
-                    ProductKey.Equals(other.ProductKey)
+                    Subscription == other.Subscription ||
+                    Subscription != null &&
+                    Subscription.Equals(other.Subscription)
                 ) && 
                 (
-                    Application == other.Application ||
-                    Application != null &&
-                    Application.Equals(other.Application)
+                    SubscriberCredential == other.SubscriberCredential ||
+                    SubscriberCredential != null &&
+                    SubscriberCredential.Equals(other.SubscriberCredential)
                 ) && 
                 (
                     Method == other.Method ||
@@ -412,9 +412,9 @@ namespace IO.Revenium.Models
                     if (Api != null)
                     hashCode = hashCode * 59 + Api.GetHashCode();
                     if (ProductKey != null)
-                    hashCode = hashCode * 59 + ProductKey.GetHashCode();
+                    hashCode = hashCode * 59 + Subscription.GetHashCode();
                     if (Application != null)
-                    hashCode = hashCode * 59 + Application.GetHashCode();
+                    hashCode = hashCode * 59 + SubscriberCredential.GetHashCode();
                     if (Method != null)
                     hashCode = hashCode * 59 + Method.GetHashCode();
                     if (Url != null)
